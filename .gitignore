@@ -1,6 +1,8 @@
 **/.*
 !**/.gitignore
 !**/.dockerignore
+!.editorconfig
+!.github
 **/target
 **/mvnw
 **/mvnw.cmd
