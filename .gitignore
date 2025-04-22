@@ -1,0 +1,7 @@
+**/.*
+!**/.gitignore
+!**/.dockerignore
+**/target
+**/mvnw
+**/mvnw.cmd
+**/*.iml
