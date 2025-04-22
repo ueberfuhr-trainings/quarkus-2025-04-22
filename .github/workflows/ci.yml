@@ -7,18 +7,12 @@ on:
     paths:
       - "customer-api-provider/**"
       - ".github/workflows/ci.yml"
-    paths-ignore:
-      - "**/*.md"
-      - "**/.*"
   pull_request:
     branches:
       - "main"
     paths:
       - "customer-api-provider/**"
       - ".github/workflows/ci.yml"
-    paths-ignore:
-      - "**/*.md"
-      - "**/.*"
 
 jobs:
   build:
