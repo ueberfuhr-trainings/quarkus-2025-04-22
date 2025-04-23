@@ -13,3 +13,9 @@
 ## Testen
 
 ![02-testen.png](02-testen.png)
+
+## REST
+- [Original-Dissertation](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
+- [Zalando Guidelines](https://opensource.zalando.com/restful-api-guidelines/)
+
+- ![03-rest.png](03-rest.png)
