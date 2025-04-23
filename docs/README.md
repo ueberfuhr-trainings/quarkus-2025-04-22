@@ -9,3 +9,7 @@
   - [Projekt mit Maven anlegen](https://quarkus.io/guides/getting-started)
 
 ![01-quarkus-einordnung.png](01-quarkus-einordnung.png)
+
+## Testen
+
+![02-testen.png](02-testen.png)
