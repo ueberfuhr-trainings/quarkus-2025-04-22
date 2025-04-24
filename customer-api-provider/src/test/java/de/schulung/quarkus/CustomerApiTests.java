@@ -182,4 +182,16 @@ class CustomerApiTests {
       .body("uuid", is(equalTo(uuid)));
   }
 
+  @Test
+  void whenGetCustomerByIdForNonExisting_thenReturn404() {
+    // TODO: UUID ausschließen -> vorher löschen
+    var uuid = "12345678-1234-1234-1234-123456789012";
+    given()
+      .accept(ContentType.JSON)
+      .when()
+      .get("/customers/{uuid}", uuid)
+      .then()
+      .statusCode(404);
+  }
+
 }

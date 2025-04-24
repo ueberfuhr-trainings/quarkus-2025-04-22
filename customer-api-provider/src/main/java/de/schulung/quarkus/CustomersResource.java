@@ -1,6 +1,7 @@
 package de.schulung.quarkus;
 
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -45,15 +46,14 @@ public class CustomersResource {
   @GET
   @Path("/{uuid}")
   @Produces(MediaType.APPLICATION_JSON)
-  public Response getCustomerById(
+  public Customer getCustomerById(
     @PathParam("uuid") UUID uuid
   ) {
-    var customer = customers.get(uuid);
-    if (null == customer) {
-      return Response.status(404).build();
-    } else {
-      return Response.ok(customer).build();
+    var result = customers.get(uuid);
+    if (null == result) {
+      throw new NotFoundException();
     }
+    return result;
   }
 
   @POST
