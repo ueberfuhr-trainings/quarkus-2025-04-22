@@ -155,6 +155,32 @@ class CustomerApiTests {
                 "state": "active"
               }
       """,
+    """
+              {
+                "birthdate": "2001-04-23",
+                "state": "active"
+              }
+      """,
+    """
+              {
+                "name": "Tom Mayer",
+                "state": "active"
+              }
+      """,
+    """
+              {
+                "name": "T",
+                "birthdate": "2001-04-23",
+                "state": "active"
+              }
+      """,
+    """
+              {
+                "name": "T0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
+                "birthdate": "2001-04-23",
+                "state": "active"
+              }
+      """,
   })
   void whenPostCustomersWithUuid_thenBadRequest(String body) {
     given()
