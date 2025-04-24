@@ -148,6 +148,13 @@ class CustomerApiTests {
                 "gelbekatze": "test"
               }
       """,
+    """
+              {
+                "name": "Tom Mayer",
+                "birthdate": "gelbekatze",
+                "state": "active"
+              }
+      """,
   })
   void whenPostCustomersWithUuid_thenBadRequest(String body) {
     given()
