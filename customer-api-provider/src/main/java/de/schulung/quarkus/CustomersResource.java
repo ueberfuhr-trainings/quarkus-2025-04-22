@@ -1,5 +1,6 @@
 package de.schulung.quarkus;
 
+import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.NotFoundException;
@@ -12,10 +13,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
 
-import java.time.LocalDate;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 @Path("/customers")
@@ -24,24 +22,17 @@ public class CustomersResource {
   @Context
   UriInfo uriInfo;
 
-  // TODO replace it
-  private final Map<UUID, Customer> customers = new HashMap<>();
+  @Inject
+  CustomersService customersService;
 
-  {
-    Customer customer = new Customer();
-    customer.setUuid(UUID.randomUUID());
-    customer.setName("Tom Mayer");
-    customer.setBirthdate(LocalDate.now().minusYears(30));
-    customer.setState("active");
-    customers.put(customer.getUuid(), customer);
-  }
 
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   public Collection<Customer> getCustomers() {
     return this
-      .customers
-      .values();
+      .customersService
+      .findAll()
+      .toList();
   }
 
   @GET
@@ -50,11 +41,10 @@ public class CustomersResource {
   public Customer getCustomerById(
     @PathParam("uuid") UUID uuid
   ) {
-    var result = customers.get(uuid);
-    if (null == result) {
-      throw new NotFoundException();
-    }
-    return result;
+    return this
+      .customersService
+      .findById(uuid)
+      .orElseThrow(NotFoundException::new);
   }
 
   @POST
@@ -64,8 +54,9 @@ public class CustomersResource {
     @Valid
     Customer customer
   ) {
-    customer.setUuid(UUID.randomUUID());
-    this.customers.put(customer.getUuid(), customer);
+    this
+      .customersService
+      .create(customer);
     return Response
       .created(
         uriInfo
