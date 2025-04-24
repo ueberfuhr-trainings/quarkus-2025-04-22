@@ -1,5 +1,7 @@
 package de.schulung.quarkus;
 
+import jakarta.json.bind.annotation.JsonbTransient;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -14,8 +16,7 @@ public class Customer {
     return uuid;
   }
 
-  // TODO: 400
-  // @JsonbTransient
+  @JsonbTransient
   public void setUuid(UUID uuid) {
     this.uuid = uuid;
   }

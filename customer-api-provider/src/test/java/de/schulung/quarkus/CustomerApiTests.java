@@ -3,6 +3,8 @@ package de.schulung.quarkus;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -128,18 +130,29 @@ class CustomerApiTests {
       .statusCode(415);
   }
 
-  @Test
-  void whenPostCustomersWithUuid_thenBadRequest() {
+  @ParameterizedTest
+  @ValueSource(strings = {
+    """
+              {
+                "uuid": "12345678-1234-1234-1234-123456789012",
+                "name": "Tom Mayer",
+                "birthdate": "2001-04-23",
+                "state": "active"
+              }
+      """,
+    """
+              {
+                "name": "Tom Mayer",
+                "birthdate": "2001-04-23",
+                "state": "active",
+                "gelbekatze": "test"
+              }
+      """,
+  })
+  void whenPostCustomersWithUuid_thenBadRequest(String body) {
     given()
       .contentType(ContentType.JSON)
-      .body("""
-            {
-              "uuid": "12345678-1234-1234-1234-123456789012",
-              "name": "Tom Mayer",
-              "birthdate": "2001-04-23",
-              "state": "active"
-            }
-        """)
+      .body(body)
       .accept(ContentType.JSON)
       .when()
       .post("/customers")

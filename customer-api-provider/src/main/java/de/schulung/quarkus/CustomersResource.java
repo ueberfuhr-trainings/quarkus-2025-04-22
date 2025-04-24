@@ -62,9 +62,6 @@ public class CustomersResource {
   public Response createCustomer(
     Customer customer
   ) {
-    if (customer.getUuid() != null) {
-      return Response.status(400).build();
-    }
     customer.setUuid(UUID.randomUUID());
     this.customers.put(customer.getUuid(), customer);
     return Response
