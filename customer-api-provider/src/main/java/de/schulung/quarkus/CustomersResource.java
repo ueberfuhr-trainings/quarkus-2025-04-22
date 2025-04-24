@@ -1,5 +1,6 @@
 package de.schulung.quarkus;
 
+import jakarta.validation.Valid;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.POST;
@@ -60,6 +61,7 @@ public class CustomersResource {
   @Produces(MediaType.APPLICATION_JSON)
   // @Consumes(MediaType.APPLICATION_JSON)
   public Response createCustomer(
+    @Valid
     Customer customer
   ) {
     customer.setUuid(UUID.randomUUID());
