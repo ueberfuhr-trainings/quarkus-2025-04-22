@@ -1,5 +1,7 @@
-package de.schulung.quarkus;
+package de.schulung.quarkus.boundary;
 
+import de.schulung.quarkus.domain.Customer;
+import de.schulung.quarkus.domain.CustomersService;
 import io.quarkus.test.InjectMock;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
@@ -30,11 +32,10 @@ class CustomerApiWithMockedServiceTests {
 
   @Test
   void whenGetCustomers_thenOk() {
-    var customer = new Customer();
-    customer.setUuid(UUID.randomUUID());
-    customer.setName("Tom Mayer");
-    customer.setBirthdate(LocalDate.of(2001, Month.APRIL, 23));
-    customer.setState("active");
+    var customer = new Customer()
+      .setUuid(UUID.randomUUID())
+      .setName("Tom Mayer")
+      .setBirthdate(LocalDate.of(2001, Month.APRIL, 23));
 
     when(customersService.findAll())
       .thenReturn(Stream.of(customer));

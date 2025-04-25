@@ -1,4 +1,4 @@
-package de.schulung.quarkus;
+package de.schulung.quarkus.domain;
 
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.QuarkusTestProfile;

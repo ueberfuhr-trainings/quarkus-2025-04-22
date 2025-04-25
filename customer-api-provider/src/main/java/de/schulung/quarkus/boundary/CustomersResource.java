@@ -1,5 +1,6 @@
-package de.schulung.quarkus;
+package de.schulung.quarkus.boundary;
 
+import de.schulung.quarkus.domain.CustomersService;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.GET;
@@ -24,26 +25,30 @@ public class CustomersResource {
 
   @Inject
   CustomersService customersService;
+  @Inject
+  CustomerDtoMapper mapper;
 
 
   @GET
   @Produces(MediaType.APPLICATION_JSON)
-  public Collection<Customer> getCustomers() {
+  public Collection<CustomerDto> getCustomers() {
     return this
       .customersService
       .findAll()
+      .map(this.mapper::map)
       .toList();
   }
 
   @GET
   @Path("/{uuid}")
   @Produces(MediaType.APPLICATION_JSON)
-  public Customer getCustomerById(
+  public CustomerDto getCustomerById(
     @PathParam("uuid") UUID uuid
   ) {
     return this
       .customersService
       .findById(uuid)
+      .map(this.mapper::map)
       .orElseThrow(NotFoundException::new);
   }
 
@@ -52,8 +57,9 @@ public class CustomersResource {
   // @Consumes(MediaType.APPLICATION_JSON)
   public Response createCustomer(
     @Valid
-    Customer customer
+    CustomerDto customerDto
   ) {
+    var customer = this.mapper.map(customerDto);
     this
       .customersService
       .create(customer);
@@ -64,7 +70,7 @@ public class CustomersResource {
           .path(customer.getUuid().toString())
           .build()
       )
-      .entity(customer)
+      .entity(mapper.map(customer))
       .build();
   }
 

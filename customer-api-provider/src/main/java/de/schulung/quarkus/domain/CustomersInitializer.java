@@ -1,4 +1,4 @@
-package de.schulung.quarkus;
+package de.schulung.quarkus.domain;
 
 import io.quarkus.arc.properties.IfBuildProperty;
 import io.quarkus.runtime.Startup;
@@ -19,11 +19,11 @@ public class CustomersInitializer {
   @Startup
   public void init() {
     if (customersService.count() == 0) {
-      Customer customer = new Customer();
-      customer.setName("Tom Mayer");
-      customer.setBirthdate(LocalDate.now().minusYears(30));
-      customer.setState("active");
-      customersService.create(customer);
+      customersService.create(
+        new Customer()
+          .setName("Tom Mayer")
+          .setBirthdate(LocalDate.now().minusYears(30))
+      );
     }
   }
 

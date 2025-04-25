@@ -1,4 +1,4 @@
-package de.schulung.quarkus;
+package de.schulung.quarkus.boundary;
 
 import io.quarkus.jsonb.JsonbConfigCustomizer;
 import jakarta.inject.Singleton;
