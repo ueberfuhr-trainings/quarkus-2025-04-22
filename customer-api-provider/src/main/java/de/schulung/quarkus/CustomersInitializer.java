@@ -1,10 +1,15 @@
 package de.schulung.quarkus;
 
+import io.quarkus.arc.properties.IfBuildProperty;
 import io.quarkus.runtime.Startup;
 import jakarta.inject.Inject;
 
 import java.time.LocalDate;
 
+@IfBuildProperty(
+  name = "customers.initialization.enabled",
+  stringValue = "true"
+)
 // @Dependent
 public class CustomersInitializer {
 
