@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Stream;
 
@@ -88,5 +89,19 @@ class CustomerApiWithMockedServiceTests {
     verifyNoInteractions(customersService);
 
   }
+
+  @Test
+  void whenGetCustomerByIdForNonExisting_thenReturn404() {
+    var uuid = UUID.randomUUID();
+    when(customersService.findById(uuid))
+      .thenReturn(Optional.empty());
+    given()
+      .accept(ContentType.JSON)
+      .when()
+      .get("/customers/{uuid}", uuid)
+      .then()
+      .statusCode(404);
+  }
+
 
 }
