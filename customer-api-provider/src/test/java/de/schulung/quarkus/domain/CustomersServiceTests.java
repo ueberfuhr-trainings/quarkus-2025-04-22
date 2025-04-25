@@ -1,4 +1,4 @@
-package de.schulung.quarkus;
+package de.schulung.quarkus.domain;
 
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
@@ -16,9 +16,8 @@ class CustomersServiceTests {
 
   @Test
   void whenCreateInvalidCustomer_ThenException() {
-    Customer customer = new Customer();
-    customer.setBirthdate(LocalDate.now().minusYears(20));
-    customer.setState("active");
+    Customer customer = new Customer()
+      .setBirthdate(LocalDate.now().minusYears(20));
     assertThatThrownBy(() -> customersService.create(customer))
       .isNotNull();
   }

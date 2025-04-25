@@ -1,6 +1,5 @@
-package de.schulung.quarkus;
+package de.schulung.quarkus.domain;
 
-import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -15,38 +14,41 @@ public class Customer {
   private String name;
   @NotNull
   private LocalDate birthdate;
-  private String state;
+  private CustomerState state = CustomerState.ACTIVE;
 
   public UUID getUuid() {
     return uuid;
   }
 
-  @JsonbTransient
-  public void setUuid(UUID uuid) {
+  public Customer setUuid(UUID uuid) {
     this.uuid = uuid;
+    return this;
   }
 
   public String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public Customer setName(String name) {
     this.name = name;
+    return this;
   }
 
   public LocalDate getBirthdate() {
     return birthdate;
   }
 
-  public void setBirthdate(LocalDate birthdate) {
+  public Customer setBirthdate(LocalDate birthdate) {
     this.birthdate = birthdate;
+    return this;
   }
 
-  public String getState() {
+  public CustomerState getState() {
     return state;
   }
 
-  public void setState(String state) {
+  public Customer setState(CustomerState state) {
     this.state = state;
+    return this;
   }
 }
