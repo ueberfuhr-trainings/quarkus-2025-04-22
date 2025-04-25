@@ -19,3 +19,10 @@
 - [Zalando Guidelines](https://opensource.zalando.com/restful-api-guidelines/)
 
 - ![03-rest.png](03-rest.png)
+
+# Dependency Injection
+
+- [CDI (Jakarta EE)](https://jakarta.ee/specifications/cdi/4.1/jakarta-cdi-spec-4.1)
+- [Quarkus Arc](https://quarkus.io/guides/cdi-reference)
+
+![04-dependency-injection.png](04-dependency-injection.png)
