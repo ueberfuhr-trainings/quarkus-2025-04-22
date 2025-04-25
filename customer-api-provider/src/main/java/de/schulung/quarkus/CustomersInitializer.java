@@ -1,12 +1,11 @@
 package de.schulung.quarkus;
 
 import io.quarkus.runtime.Startup;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
 import java.time.LocalDate;
 
-@ApplicationScoped
+// @Dependent
 public class CustomersInitializer {
 
   @Inject
