@@ -1,6 +1,7 @@
 package de.schulung.quarkus;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.validation.Valid;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -40,7 +41,7 @@ public class CustomersService {
       );
   }
 
-  public void create(Customer customer) {
+  public void create(@Valid Customer customer) {
     customer.setUuid(UUID.randomUUID());
     this.customers.put(customer.getUuid(), customer);
   }
