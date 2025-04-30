@@ -32,3 +32,9 @@
 - [Interceptors (Jakarta EE)](https://jakarta.ee/specifications/interceptors/2.2/jakarta-interceptors-spec-2.2)
 
 ![05-proxy-objects.png](05-proxy-objects.png)
+
+# Schichtenarchitektur
+
+- [Motivation für Clean Architecture (Blog von Uncle Bob)](https://blog.cleancoder.com/uncle-bob/2016/01/04/ALittleArchitecture.html)
+
+![06-layers.png](06-layers.png)
