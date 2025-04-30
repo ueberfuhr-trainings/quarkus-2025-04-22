@@ -28,7 +28,6 @@ public class CustomerEntity {
   @NotNull
   @Column(name = "BIRTH_DATE")
   private LocalDate birthdate;
-  // TODO check?
   private CustomerState state = CustomerState.ACTIVE;
 
   public UUID getUuid() {
