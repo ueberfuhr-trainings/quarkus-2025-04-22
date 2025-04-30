@@ -1,5 +1,6 @@
 package de.schulung.quarkus.domain;
 
+import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @QuarkusTest
+@TestTransaction
 class CustomersServiceTests {
 
   @Inject
