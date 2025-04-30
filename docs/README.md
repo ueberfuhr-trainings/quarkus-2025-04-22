@@ -43,6 +43,8 @@
 
 - [JDBC Sample](https://www.tutorialspoint.com/jdbc/jdbc-sample-code.htm)
 - [JPA Sample](https://www.vogella.com/tutorials/JavaPersistenceAPI/article.html)
+- [JPA 3.1](https://jakarta.ee/specifications/persistence/3.1/jakarta-persistence-spec-3.1)
+- [Panache](https://quarkus.io/guides/hibernate-orm-panache)
 - [Quarkus Dev Services for Databases](https://quarkus.io/guides/databases-dev-services)
 
 ![07-database-access.png](07-database-access.png)

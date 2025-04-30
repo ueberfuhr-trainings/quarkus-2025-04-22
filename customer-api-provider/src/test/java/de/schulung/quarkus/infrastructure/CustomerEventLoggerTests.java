@@ -2,6 +2,7 @@ package de.schulung.quarkus.infrastructure;
 
 import de.schulung.quarkus.test.shared.OutputCaptureExtension;
 import de.schulung.quarkus.test.shared.OutputCaptureExtension.CapturedOutput;
+import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
 @QuarkusTest
+@TestTransaction
 @ExtendWith(OutputCaptureExtension.class)
 public class CustomerEventLoggerTests {
 
