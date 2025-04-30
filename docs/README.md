@@ -20,21 +20,29 @@
 
 - ![03-rest.png](03-rest.png)
 
-# Dependency Injection
+## Dependency Injection
 
 - [CDI (Jakarta EE)](https://jakarta.ee/specifications/cdi/4.1/jakarta-cdi-spec-4.1)
 - [Quarkus Arc](https://quarkus.io/guides/cdi-reference)
 
 ![04-dependency-injection.png](04-dependency-injection.png)
 
-# Interceptors
+## Interceptors
 
 - [Interceptors (Jakarta EE)](https://jakarta.ee/specifications/interceptors/2.2/jakarta-interceptors-spec-2.2)
 
 ![05-proxy-objects.png](05-proxy-objects.png)
 
-# Schichtenarchitektur
+## Schichtenarchitektur
 
 - [Motivation für Clean Architecture (Blog von Uncle Bob)](https://blog.cleancoder.com/uncle-bob/2016/01/04/ALittleArchitecture.html)
 
 ![06-layers.png](06-layers.png)
+
+## Datenbankzugriffe
+
+- [JDBC Sample](https://www.tutorialspoint.com/jdbc/jdbc-sample-code.htm)
+- [JPA Sample](https://www.vogella.com/tutorials/JavaPersistenceAPI/article.html)
+- [Quarkus Dev Services for Databases](https://quarkus.io/guides/databases-dev-services)
+
+![07-database-access.png](07-database-access.png)
