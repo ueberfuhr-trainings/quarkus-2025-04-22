@@ -2,10 +2,9 @@ package de.schulung.quarkus.domain;
 
 import de.schulung.quarkus.shared.interceptors.FireEvent;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Stream;
@@ -13,34 +12,24 @@ import java.util.stream.Stream;
 @ApplicationScoped
 public class CustomersService {
 
-  private final Map<UUID, Customer> customers = new HashMap<>();
+  @Inject
+  CustomersSink sink;
 
   public Stream<Customer> findAll() {
-    return this
-      .customers
-      .values()
-      .stream();
+    return sink.findAll();
   }
 
   public long count() {
-    return this
-      .customers
-      .size();
+    return sink.count();
   }
 
   public Optional<Customer> findById(UUID uuid) {
-    return Optional
-      .ofNullable(
-        this
-          .customers
-          .get(uuid)
-      );
+    return sink.findById(uuid);
   }
 
   @FireEvent(CustomerCreatedEvent.class)
   public void create(@Valid Customer customer) {
-    customer.setUuid(UUID.randomUUID());
-    this.customers.put(customer.getUuid(), customer);
+    sink.create(customer);
   }
 
 }
