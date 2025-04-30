@@ -1,8 +1,7 @@
 package de.schulung.quarkus.domain;
 
+import de.schulung.quarkus.shared.interceptors.FireEvent;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.event.Event;
-import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 
 import java.util.HashMap;
@@ -13,9 +12,6 @@ import java.util.stream.Stream;
 
 @ApplicationScoped
 public class CustomersService {
-
-  @Inject
-  Event<Object> eventPublisher;
 
   private final Map<UUID, Customer> customers = new HashMap<>();
 
@@ -41,12 +37,10 @@ public class CustomersService {
       );
   }
 
+  @FireEvent(CustomerCreatedEvent.class)
   public void create(@Valid Customer customer) {
     customer.setUuid(UUID.randomUUID());
     this.customers.put(customer.getUuid(), customer);
-    eventPublisher
-      .select(CustomerCreatedEvent.class)
-      .fire(new CustomerCreatedEvent(customer));
   }
 
 }
